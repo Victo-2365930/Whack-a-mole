@@ -9,7 +9,7 @@ public class Taupe : MonoBehaviour
 
     private Renderer rendererCouleur;
     private Color couleurApresCoup = Color.green;
-    public bool estFrappe = false;
+    private bool estFrappe = false;
 
     #endregion
 

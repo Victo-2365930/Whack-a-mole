@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3806059675547421090, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.87404096
       objectReference: {fileID: 0}
     - target: {fileID: 3806059675547421090, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 0.87404096
       objectReference: {fileID: 0}
     - target: {fileID: 3806059675547421090, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.87404096
       objectReference: {fileID: 0}
     - target: {fileID: 3806059675547421090, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.295
+      value: 1.3194
       objectReference: {fileID: 0}
     - target: {fileID: 3806059675547421090, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3806059675547421090, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8
+      value: 8.0009
       objectReference: {fileID: 0}
     - target: {fileID: 3806059675547421090, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582984025718723352, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_Name
-      value: SM_Bouncy_Hammer_Toy Variant
+      value: Marteau
       objectReference: {fileID: 0}
     - target: {fileID: 4582984025718723352, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4582984025718723352, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2503210002387475678}
+    - targetCorrespondingSourceObject: {fileID: 4582984025718723352, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8559689961810770459}
   m_SourcePrefab: {fileID: 100100000, guid: 09a2ee2762476834083711dd68080b6c, type: 3}
 --- !u!1 &4678451166979568854 stripped
 GameObject:
@@ -100,7 +103,34 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.22365403
-  m_Height: 0.9
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0.6}
+  m_Radius: 0.29673392
+  m_Height: 1.5977372
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.25113004}
+--- !u!54 &8559689961810770459
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678451166979568854}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 2

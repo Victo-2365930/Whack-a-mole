@@ -10,18 +10,8 @@ using UnityEngine;
  * L'Utilisation du VR
  *  Logique de Marteau (XR Interaction Toolkit)
  *  Intéraction entre marteau et taupe
- *  
- * Faire le UI en world space
- *  Créer dans Unity (Boutons, recommencer, etc)
- *  Faire les liens entre le text et le jeu
- *  
- * Fin de jeu
  * 
  * Son
- * 
- * Murs autour
- * 
- * Faire le build!
  */
 
 /// <summary>
@@ -31,7 +21,8 @@ public class GameController : MonoBehaviour
 {
     #region Variables
     //Gestion de jeu
-    public bool partieEnCours = false;
+    private bool partieEnCours = false;
+    public float tempsEntreTaupeOrigine = 2.0f;
     private int indexTaupe = 0;
     private int nombreFrappes = 0;
     private float chrono = 60.0f;
@@ -49,34 +40,28 @@ public class GameController : MonoBehaviour
     [SerializeField, Tooltip("Liste des cases d'apparition de mole (0 à 8)")]
     public GameObject[] groupeCase;
 
-    //Gestion du UI
+    [Header("UI")]
     [Tooltip("Texte qui définie le temps")]
     public TextMeshProUGUI texteChrono;
-
     [Tooltip("Texte qui montre le nombre de mole touchés")]
     public TextMeshProUGUI nombreTaupesTouchees;
-    /*
-    [Tooltip("Texte d'instruction")]
-    public TextMeshProUGUI instruction;
-    [Tooltip("Texte d'instruction")]
-    public TextMeshProUGUI endGameText;
-    */
-    //Gestion des Prefabs
+    [Tooltip("Texte de score sur l'écran de fin")]
+    public TextMeshProUGUI texteScoreFin;
+    [SerializeField] private GameObject canvasMenu;
+    [SerializeField] private GameObject canvasHUD;
+    [SerializeField] private GameObject canvasGameOver;
+
+    [Header("Prefabs")]
     [Tooltip("Prefab du marteau")]
     public GameObject Prefab_marteau;
-    [Tooltip("Prefab de la mole")]
+    [Tooltip("Prefab de la taupe")]
     public GameObject Prefab_taupe;
 
     #endregion
 
-    void Start()
-    {
-        CommencerPartie();
-    }
-
     void Update()
     {
-        //MAJChrono();
+        MAJChrono();
     }
 
     /// <summary>
@@ -92,13 +77,17 @@ public class GameController : MonoBehaviour
             {
                 chrono = 0;
                 partieEnCours = false;
+                canvasHUD.SetActive(false);
+                canvasGameOver.SetActive(true);
+                texteScoreFin.text = $"Score Final : {nombreFrappes}";
             }
 
-            if (chrono <= 15.0f) tempsEntreTaupe = 0.8f;
-            else if (chrono <= 30.0f) tempsEntreTaupe = 1.2f;    
+            if (chrono <= 15.0f) tempsEntreTaupe = 1.0f;
+            else if (chrono <= 30.0f) tempsEntreTaupe = 1.5f;    
             
         }
         texteChrono.text = chrono.ToString("f0");
+
     }
 
     /// <summary>
@@ -106,6 +95,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void CommencerPartie()
     {
+        InitialiserPartie();
         partieEnCours = true;
         StartCoroutine(GestionnaireDeTaupe());
     }
@@ -124,8 +114,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void RecommencerPartie()
+    /// <summary>
+    /// Pour mettre les variables à l'état d'origine
+    /// </summary>
+    public void InitialiserPartie()
     {
+        canvasMenu.SetActive(false);
+        canvasGameOver.SetActive(false);
+        canvasHUD.SetActive(true);
         indexTaupe = 0;
         nombreFrappes = 0;
         tempsEntreTaupe = 1.0f;
@@ -134,6 +130,10 @@ public class GameController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Pour Initialiser une Taupe
+    ///     Selon l'ordre et l'index de taupe
+    /// </summary>
     private void nouvelleTaupe()
     {
         int numeroCase= sequenceTaupe[indexTaupe];
@@ -143,9 +143,12 @@ public class GameController : MonoBehaviour
         indexTaupe++;
     }
 
+    /// <summary>
+    /// Pour ajouter une frappe et mettre le UI à jour
+    /// </summary>
     public void AjouterNbFrappes()
     {
         nombreFrappes++;
-        nombreTaupesTouchees.text = nombreFrappes.ToString();
+        nombreTaupesTouchees.text = $"Score : {nombreFrappes}";
     }
 }
