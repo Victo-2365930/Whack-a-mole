@@ -9,9 +9,10 @@ using UnityEngine;
  * 
  * L'Utilisation du VR
  *  Logique de Marteau (XR Interaction Toolkit)
- *  Intéraction entre marteau et taupe
  * 
  * Son
+ * 
+ * Retour Haptique
  */
 
 /// <summary>

@@ -5,31 +5,6 @@ using UnityEngine;
 /// </summary>
 public class Taupe : MonoBehaviour
 {
-    #region Variables
-
-    private Renderer rendererCouleur;
-    private Color couleurApresCoup = Color.green;
-    private bool estFrappe = false;
-
-    #endregion
-
-    void Start()
-    {
-        rendererCouleur = GetComponent<Renderer>();
-    }
-
-    /// <summary>
-    /// Pour changer la couleur de la taupe lorsque frappée
-    ///     Sera activé par le marteau;
-    /// </summary>
-    public void TaupeFrappee()
-    {
-        if (!estFrappe)
-        {
-            estFrappe = true;
-            rendererCouleur.material.color = couleurApresCoup;
-        }       
-    }
 
     /// <summary>
     /// Pour détruire la taupe
@@ -39,6 +14,5 @@ public class Taupe : MonoBehaviour
     {
         Destroy(transform.parent.gameObject);
     }
-
 
 }
