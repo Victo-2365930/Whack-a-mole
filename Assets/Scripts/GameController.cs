@@ -3,18 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-/*
- * TO-DO
- * Descriptions
- * 
- * L'Utilisation du VR
- *  Logique de Marteau (XR Interaction Toolkit)
- * 
- * Son
- * 
- * Retour Haptique
- */
-
 /// <summary>
 /// Pour gérer la logique de jeu de Whack-a-mole
 /// </summary>
